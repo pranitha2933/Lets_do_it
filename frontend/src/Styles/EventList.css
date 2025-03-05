@@ -1,0 +1,131 @@
+/* Main Container */
+.event-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: #f7f9fc;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* ✅ Center everything */
+}
+
+/* Create Event Button */
+.create-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.create-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Event List Title */
+.title {
+    text-align: center;
+    color: #004085;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.title-text{
+    background-color: #007bff;
+}
+/* Grid Layout */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;  /* ✅ Ensure grid is centered */
+}
+
+/* Event Card */
+.event-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;  /* ✅ Center text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* ✅ Ensure everything is centered */
+    justify-content: center;
+    width: 350px;  /* ✅ Fix width to maintain alignment */
+    margin: auto;  /* ✅ Ensure it stays centered */
+}
+
+/* Hover Effect */
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Event Image */
+.event-img {
+    width: 80%;  /* ✅ Adjusted width */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #002a5a;
+    margin-bottom: 5px;
+}
+
+/* Event Description */
+.event-desc {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 10px;
+    width: 80%;  /* ✅ Keep text centered properly */
+}
+
+/* Event Info */
+.event-info {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Event Category */
+.event-category {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* No Events */
+.no-events {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}
+
+.chat-icon {
+    font-size: 28px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-icon:hover {
+    background: #0056b3;
+}

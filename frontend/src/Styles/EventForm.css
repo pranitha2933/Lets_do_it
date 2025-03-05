@@ -1,0 +1,91 @@
+/* Event Form Container */
+.event-form-container {
+    padding-top: 50rem;
+    max-width: 500px;
+    margin: auto;
+    padding: 50px;
+    background-color: #1e3a8a; /* Deep Blue Background */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Form Heading */
+  .event-form-container h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  
+  /* Form Layout */
+  .event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Input Fields */
+  .event-form input,
+  .event-form textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  /* Focus Effect */
+  .event-form input:focus,
+  .event-form textarea:focus {
+    outline: none;
+    border: 2px solid #2563eb;
+    background-color: #f8fafc;
+  }
+  
+  /* File Input */
+  .event-form input[type="file"] {
+    border: none;
+  }
+  
+  /* Submit Button */
+  .event-form button {
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button Hover Effect */
+  .event-form button:hover {
+    background-color: #1d4ed8;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .event-form-container {
+      width: 90%;
+    }
+  }
+  
+
+  .chat-icon {
+    font-size: 28px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-icon:hover {
+    background: #0056b3;
+}

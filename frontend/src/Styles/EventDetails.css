@@ -1,0 +1,180 @@
+
+.event-details-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f5f7fa;
+    padding: 40px 20px;
+}
+
+.event-banner {
+    margin-top: 50px;
+    width: 60%;
+    max-width: 800px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px; /* Increased space below image */
+}
+
+.event-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+.event-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 800px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.event-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.share-icon {
+    font-size: 18px;
+    margin-left: 8px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.event-description {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.event-info {
+    display: flex;
+    justify-content: space-between;
+    background: #eee;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.event-date-time,
+.event-location {
+    font-size: 14px;
+    color: #333;
+}
+
+.map-link {
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+    display: block;
+}
+
+.book-now-btn {
+    background: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-now-btn:hover {
+    background: #0056b3;
+}
+
+.chat-icon {
+    font-size: 28px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-icon:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-banner,
+    .event-content {
+        width: 85%;
+    }
+
+    .event-title {
+        font-size: 22px;
+    }
+
+    .event-description {
+        font-size: 14px;
+    }
+
+    .book-now-btn {
+        font-size: 14px;
+    }
+}
+
+.map-link {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: blue;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: underline;
+    margin-top: 5px;
+}
+
+.map-link:hover {
+    color: darkblue;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.book-now-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.book-now-button:hover {
+    background: #0056b3;
+}

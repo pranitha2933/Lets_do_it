@@ -1,0 +1,225 @@
+.navbar {
+  margin-right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: blue;
+}
+
+.search-bar {
+  padding: 12px;
+  width: 60rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-item {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-btn {
+  background: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.flag-selector {
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.profile {
+  margin-right: 50px;
+  background: blue;
+  color: white;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 12px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.user-menu:hover .dropdown {
+  display: block;
+}
+
+.dropdown {
+  margin-right: 50px;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.user-menu:hover .dropdown,
+.profile:focus+.dropdown {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-item {
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #f9f9f9;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dropdown-item:hover {
+  background: #e0e0e0;
+}
+
+/* Flag Selector Styling */
+.flag-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.flag-image {
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+}
+
+.flag-selector {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.dropdown-container,
+.profile-container {
+  position: relative;
+}
+
+.events-dropdown,
+.profile-dropdown {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  padding: 5px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.event-item,
+.profile-item {
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  background: white;
+}
+
+.event-item:last-child,
+.profile-item:last-child {
+  border-bottom: none;
+}
+
+.event-item:hover,
+.profile-item:hover {
+  background: #e0e0e0;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #211f1f;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  width: 500px;
+  font-size: 16px;
+}
+
+.search-icon-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-icon {
+  font-size: 18px;
+  color: #333;
+}
