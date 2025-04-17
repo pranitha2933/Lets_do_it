@@ -9,6 +9,7 @@ const fs = require("fs");
 dotenv.config();
 const bodyParser = require("body-parser");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const recruiterRoutes = require("./routes/recruiterRoutes");
 
 
 const app = express();
@@ -17,21 +18,34 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("uploads")); 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use(express.static(path.join(__dirname, "client", "build")));
+const uploadPath = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath, { recursive: true });
+app.use("/uploads", express.static(uploadPath));
+
+// app.use(express.static(path.join(__dirname, "../frontend/public")));
+// app.get("*", (req, res) =>
+//   res.sendFile(path.resolve(__dirname, "../frontend", "public", "index.html"))
+// );
+
+app.use("/api/recruiter", recruiterRoutes);
  // ✅ Serves images correctly
 
 // ✅ Serves images publicly
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
 
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log("MongoDB Connection Error:", err));
+connectDB();
 
-const uploadPath = path.join(__dirname, "uploads");
-if (!fs.existsSync(uploadPath)) {
-  fs.mkdirSync(uploadPath, { recursive: true });
-}
 
 // Configure multer storage
 const storage = multer.diskStorage({
@@ -47,7 +61,7 @@ const upload = multer({ storage });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.post("/events", upload.single("image"), async (req, res) => {
     try {
-        const { title, description, date, time, location, country, category, price } = req.body; // ✅ Added "time"
+        const { title, description, date, time, location, country, category, price, booklink, maplink } = req.body; // ✅ Added "time"
         const imagePath = req.file ? `uploads/${req.file.filename}` : null;
 
         const newEvent = new Event({
@@ -59,7 +73,9 @@ app.post("/events", upload.single("image"), async (req, res) => {
             country,
             category,
             price,
-            image: imagePath
+            image: imagePath,
+            booklink,
+            maplink
         });
 
         await newEvent.save();
@@ -74,12 +90,11 @@ app.post("/events", upload.single("image"), async (req, res) => {
 app.get("/events", async (req, res) => {
   try {
     const events = await Event.find();
-    res.status(200).json(events);
+    res.json(events);
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ error: "Failed to fetch events" });
   }
 });
-
 
 app.get("/events/:id", async (req, res) => {
     try {
@@ -93,9 +108,7 @@ app.get("/events/:id", async (req, res) => {
     }
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+
 
 app.get("/maps/:location", (req, res) => {
   const location = req.params.location;
@@ -122,4 +135,5 @@ app.post("/payment", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log("Server running on port " + PORT));

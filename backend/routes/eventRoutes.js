@@ -26,6 +26,8 @@ router.post('/events', upload.single('image'), async (req, res) => {
         category: req.body.category,
         image: req.file.path,
         price: req.body.price,
+        booklink: req.body.booklink,
+        maplink: req.body.maplink
       });
       await newEvent.save();
       res.status(201).json(newEvent);

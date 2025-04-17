@@ -1,0 +1,117 @@
+/* Modal container */
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form container */
+.form-container {
+  position: relative;
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  color: #4a5568;
+  text-align: center;
+  width: 350px;
+}
+
+/* Form title */
+.form-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+/* Form subtitle */
+.form-subtitle {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #718096;
+}
+
+/* Input field container */
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #cbd5e0;
+  padding: 10px;
+  border-radius: 999px;
+  margin-top: 16px;
+}
+
+.input-container img {
+  width: 16px;
+}
+
+/* Input field */
+.input-field {
+  outline: none;
+  border: none;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+/* Forgot password link */
+.forgot-password {
+  font-size: 14px;
+  color: #2563eb;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+/* Submit button */
+.submit-button {
+  background-color: #2563eb;
+  width: 100%;
+  color: white;
+  padding: 12px;
+  border-radius: 999px;
+  margin-top: 16px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Signup/Login switch text */
+.switch-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.switch-link {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* Close icon */
+.close-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  width: 16px;
+}
+
+/* Upload section */
+.upload-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.upload-image {
+  width: 64px;
+  border-radius: 50%;
+  cursor: pointer;
+}

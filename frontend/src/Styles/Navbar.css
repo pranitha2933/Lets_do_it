@@ -1,5 +1,5 @@
 .navbar {
-  margin-right: 40px;
+  margin-right: 200rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,13 +13,25 @@
 }
 
 .logo {
+  padding-right: 2%;
   font-size: 26px;
   font-weight: bold;
   color: blue;
+  cursor: pointer;
 }
 
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #211f1f;
+  max-width: 500px;
+}
 .search-bar {
-  padding: 12px;
+  padding: 20px;
   width: 60rem;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -38,6 +50,8 @@
 }
 
 .add-btn {
+  padding-left: 10%;
+  margin-right: 2rem;
   background: black;
   color: white;
   font-size: 20px;
@@ -110,7 +124,7 @@
 }
 
 .user-menu:hover .dropdown,
-.profile:focus+.dropdown {
+.profile:focus + .dropdown {
   visibility: visible;
   opacity: 1;
 }
@@ -132,6 +146,7 @@
 
 /* Flag Selector Styling */
 .flag-container {
+  padding-right: 5rem;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -151,18 +166,24 @@
   cursor: pointer;
 }
 
-
 .dropdown-container,
 .profile-container {
   position: relative;
 }
 
+.dropdown-containe{
+  position: fixed;
+}
+.events-dropdown{
+  font-size: 16px;
+  color: #333;
+}
 .events-dropdown,
 .profile-dropdown {
   position: absolute;
   top: 30px;
   left: 0;
-  background: white;
+  background: rgb(239, 219, 219);
   border-radius: 8px;
   padding: 5px;
   width: 150px;
@@ -193,6 +214,7 @@
 }
 
 .search-container {
+  margin-right: 20%;
   display: flex;
   align-items: center;
   background: white;
@@ -222,4 +244,201 @@
 .search-icon {
   font-size: 18px;
   color: #333;
+}
+
+.nav-links-bar {
+  margin-top: 85px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #39375e;
+  color: rgb(255, 255, 255);
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+.nav-link {
+  display: inline;
+  font-size: 16px;
+  margin: 0 6px;
+  cursor: pointer;
+}
+
+.nav-link-separator {
+  display: flex;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.city-scroll-bar {
+  margin-top: 1px;
+  background: #282828;
+  color: #666;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.city-link {
+  display: flex;
+  font-size: 14px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+
+.login-button {
+  padding-left: 3px;
+  margin-right: 100px;
+  display: flex;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links.visible {
+  display: flex; /* Show when menu is open */
+  flex-direction: column;
+  position: absolute;
+  top: 60px; /* Adjust according to your layout */
+  right: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+  margin-right: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #211f1f;
+  max-width: 500px; /* Adjust as necessary */
+}
+
+.search-bar {
+  padding: 3px 20px;
+  border: none;
+  outline: none;
+  width: 100%; /* Changed to fill the container */
+  font-size: 16px;
+}
+
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: 10px; /* Spacing between search bar and menu icon */
+  display: none; /* Hidden by default */
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+/* Default (desktop view) */
+.full-logo {
+  display: inline;
+}
+.short-logo {
+  display: none;
+}
+
+/* Mobile view */
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 36px;
+    padding-right: 1.5rem;
+    height: 2.4rem;
+    width: 3%;
+    font-weight: bolder;
+    margin-left: 10px;
+  }
+  .search-container {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .search-bar {
+    width: 80%;  /* or 100% depending on design */
+    font-size: 14px;
+  }
+
+  .search-icon-btn {
+    width: 20%;
+    font-size: 14px;
+  }
+  .full-logo {
+    display: none;
+  }
+
+  .short-logo {
+    display: inline;
+  }
+
+  .menu-icon {
+    display: block;
+    margin-left: 15px;
+  }
+
+  .user-menu{
+    padding-right: 10px;
+  }
+  .menu-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: rgb(255, 255, 255);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-open .add-btn,
+  .menu-open .login-button {
+    display: block;
+    width: 100%;
+  }
+  
 }

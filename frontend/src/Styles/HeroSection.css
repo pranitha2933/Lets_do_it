@@ -1,41 +1,48 @@
 .hero-section {
-    margin-top: 6rem;
+    margin-top: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 350px; /* Adjust height as needed */
+    height: 400px; /* ✅ Increased height for a better hero section */
+    width: 100%; /* ✅ Full width */
     background-color: #f7f9fc;
     text-align: center;
+    overflow: hidden; /* ✅ Ensures images don’t overflow */
 }
 
 .hero-container {
-    width: 80%;
+    width: 100%; /* ✅ Full width */
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .hero-image {
-    width: 150rem; /* Adjust as needed */
-    height: 300px;
+    width: 90%; /* ✅ Full width */
+    height: 85%; /* ✅ Full height */
+    border-radius: 2%;
+    
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 0; /* ✅ Removed border-radius to fit full screen */
+    box-shadow: none; /* ✅ Removed shadow for a cleaner look */
+    border-radius: 5rem; /* Default no curve */
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Scroll Buttons */
 .scroll-btn {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
-    padding: 10px;
+    padding: 12px;
     border-radius: 50%;
     transition: 0.3s;
 }
@@ -45,14 +52,51 @@
 }
 
 .left-btn {
-    left: 10px;
+    left: 15px; /* ✅ Adjusted for better positioning */
 }
 
 .right-btn {
-    right: 10px;
+    right: 15px; /* ✅ Adjusted for better positioning */
 }
 
 .loading-text {
     font-size: 18px;
     color: #555;
+}
+
+/* 🔹 Responsive Design for Tablets */
+@media (max-width: 1024px) { 
+    .hero-section {
+        height: 300px; /* ✅ Adjust height for tablets */
+    }
+
+    .scroll-btn {
+        font-size: 24px; /* ✅ Adjust button size */
+        padding: 10px;
+    }
+}
+
+/* 🔹 Responsive Design for Mobile */
+@media (max-width: 768px) {  
+    .hero-section {
+        height: 250px; /* ✅ Smaller height for mobile */
+        padding: 10px;
+    }
+
+    .scroll-btn {
+        font-size: 20px;
+        padding: 8px;
+    }
+}
+
+/* 🔹 Extra Small Screens */
+@media (max-width: 480px) {  
+    .hero-section {
+        height: 200px; /* ✅ Compact view for small screens */
+    }
+
+    .scroll-btn {
+        font-size: 18px;
+        padding: 6px;
+    }
 }

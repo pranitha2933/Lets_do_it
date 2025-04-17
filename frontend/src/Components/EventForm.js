@@ -13,7 +13,9 @@ const EventForm = () => {
     price: "",
     time: "",
     category: "",
-    image: null
+    image: null,
+    booklink: "",
+    maplink: ""
   });
 
   const navigate = useNavigate();
@@ -41,7 +43,8 @@ const EventForm = () => {
     if (eventData.image) {
       formData.append("image", eventData.image);
     }
-
+    formData.append("booklink", eventData.booklink);
+    formData.append("maplink", eventData.maplink);
     try {
       await axios.post("http://localhost:5000/events", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -70,6 +73,8 @@ const EventForm = () => {
         <input type="text" name="category" placeholder="Event Category" onChange={handleChange} required />
         <input type="text" name="price" placeholder="Event Price" onChange={handleChange} required />
         <input type="file" name="image" onChange={handleFileChange} required />
+        <input type="text" name="booklink" placeholder="Event Booking Link" onChange={handleChange} required />
+        <input type="text" name="maplink" placeholder="Event map Link" onChange={handleChange} required />
         <button type="submit" className="submit-button">Create Event</button>
       </form>
     </div>

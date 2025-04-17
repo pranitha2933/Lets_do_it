@@ -9,7 +9,9 @@ const EventSchema = new mongoose.Schema({
   time: String,
   category: String,
   image: String,
-  price: String
+  price: String, 
+  booklink: String,
+  maplink: String
 });
 
 module.exports = mongoose.model('Event', EventSchema);

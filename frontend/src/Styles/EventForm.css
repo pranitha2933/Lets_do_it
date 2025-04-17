@@ -1,4 +1,10 @@
 /* Event Form Container */
+
+.form-title {
+   color: rgb(236, 213, 213);
+  }
+  
+  /* Event Form Container */
 .event-form-container {
     padding-top: 50rem;
     max-width: 500px;
@@ -27,6 +33,8 @@
   /* Input Fields */
   .event-form input,
   .event-form textarea {
+    padding-left: 2rem;
+    padding-right: 3rem;
     padding: 12px;
     border-radius: 5px;
     border: 1px solid #d1d5db;
@@ -68,9 +76,32 @@
   /* Responsive Design */
   @media (max-width: 600px) {
     .event-form-container {
-      width: 90%;
+        width: 95%; /* Take more width for better usability */
+        padding: 20px;
     }
-  }
+
+    .event-form-container h2 {
+        font-size: 18px; /* Reduce heading size */
+    }
+
+    .event-form input,
+    .event-form textarea {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .event-form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .chat-icon {
+        font-size: 24px;
+        padding: 10px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
   
 
   .chat-icon {

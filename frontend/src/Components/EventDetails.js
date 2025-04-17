@@ -1,17 +1,42 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../Styles/EventDetails.css";
 
-const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;  // Secure API key
+// 🔧 Helper to convert any Google Maps link into embeddable format
+const getEmbedMapUrl = (originalMapLink) => {
+    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
+    if (!originalMapLink || !apiKey) return null;
+
+    try {
+        const url = new URL(originalMapLink);
+        if (url.pathname.includes("/dir/")) {
+            const parts = url.pathname.split("/dir/")[1].split("/");
+            const origin = encodeURIComponent(parts[0]);
+            const destination = encodeURIComponent(parts[1]);
+
+            return `https://www.google.com/maps/embed/v1/directions?key=${apiKey}&origin=${origin}&destination=${destination}`;
+        }
+
+        if (url.pathname.includes("/place/")) {
+            const place = url.pathname.split("/place/")[1].split("/")[0];
+            return `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(place)}`;
+        }
+
+        return null;
+    } catch (e) {
+        return null;
+    }
+};
 
 const EventDetails = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const [event, setEvent] = useState(null);
     const [error, setError] = useState(null);
     const [expanded, setExpanded] = useState(false);
     const [showMap, setShowMap] = useState(false);
+    const [showBookingLink, setShowBookingLink] = useState(false);
 
     useEffect(() => {
         axios
@@ -26,15 +51,17 @@ const EventDetails = () => {
     if (error) return <p className="error-message">{error}</p>;
     if (!event) return <p className="loading-message">Loading event details...</p>;
 
+    const embedMapUrl = getEmbedMapUrl(event.maplink);
+
     return (
         <div className="event-details-container">
             {/* Event Banner */}
             <div className="event-banner">
                 {event.image ? (
-                    <img 
-                        src={`http://localhost:5000/${event.image.replace(/\\/g, "/")}`} 
-                        alt={event.title} 
-                        className="event-image" 
+                    <img
+                        src={`http://localhost:5000/${event.image.replace(/\\/g, "/")}`}
+                        alt={event.title}
+                        className="event-image"
                     />
                 ) : (
                     <p className="no-image">No Image Available</p>
@@ -64,36 +91,63 @@ const EventDetails = () => {
                     <div className="event-location">
                         <p>📍 Location: {event.location}</p>
                         <p>🌍 Country: {event.country}</p>
-                        {event.location && (
+
+                        {/* Embed Map Section */}
+                        {event.maplink && embedMapUrl && (
                             <>
                                 <button className="map-link" onClick={() => setShowMap(!showMap)}>
                                     {showMap ? "Hide Map ▲" : "Show Map ▼"}
                                 </button>
-                                {showMap && GOOGLE_MAPS_API_KEY ? (
+                                {showMap && (
                                     <iframe
-                                        title="Google Map"
+                                        title="Event Map"
                                         width="100%"
                                         height="300"
                                         frameBorder="0"
                                         style={{ borderRadius: "10px", marginTop: "10px" }}
-                                        src={`https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(event.location)}`}
+                                        src={embedMapUrl}
                                         allowFullScreen
+                                        loading="lazy"
                                     ></iframe>
-                                ) : showMap ? (
-                                    <p className="error-message">⚠️ Google Maps API Key is missing or invalid.</p>
-                                ) : null}
+                                )}
                             </>
+                        )}
+
+                        {/* Fallback for non-convertible map links */}
+                        {event.maplink && !embedMapUrl && (
+                            <p className="error-message">
+                                ⚠️ Map link is not embeddable. Please use a valid Google Maps link with directions or place.
+                            </p>
                         )}
                     </div>
                 </div>
 
-                {/* Booking Button */}
-                <button 
-                    onClick={() => navigate(`/payment?event=${id}`)} 
+                {/* Book Now Button */}
+                <button
+                    onClick={() => setShowBookingLink(true)}
                     className="book-now-button"
                 >
                     🎟 Book Now
                 </button>
+
+                {/* Render Booking Link */}
+                {showBookingLink && event.booklink && (
+                    <div className="booking-link-container">
+                        <p>👉 Click below to complete your booking:</p>
+                        <a
+                            href={event.booklink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="booking-link-button"
+                        >
+                            Go to Booking Page 🔗
+                        </a>
+                    </div>
+                )}
+
+                {showBookingLink && !event.booklink && (
+                    <p className="error-message">⚠️ Booking link not available for this event.</p>
+                )}
             </div>
 
             {/* Chat Icon */}

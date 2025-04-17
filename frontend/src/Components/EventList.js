@@ -33,7 +33,7 @@ const EventList = ({ selectedCategory, searchQuery }) => {
     return (
         <div style={{ maxWidth: "900px", margin: "auto", padding: "20px" }}>
             <h2 style={{ textAlign: "center", color: "green" }}>
-                ......{selectedCategory ? `${selectedCategory} Events` : "All Events"}......
+                {selectedCategory ? `${selectedCategory} Events` : "All Events"}
             </h2>
 
             {events.length > 0 ? (
